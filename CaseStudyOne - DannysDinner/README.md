@@ -16,6 +16,8 @@ He plans on using these insights to help him decide whether he should expand the
 
 **Table 1: Sales**
 
+The sales table captures all `customer_id` level purchases with an corresponding `order_date ` and `product_id ` information for when and what menu items were ordered.
+
 <html><body>
 <!--StartFragment-->
 
@@ -43,6 +45,8 @@ C | 2021-01-07 | 3
 
 **Table 2: Menu**
 
+The menu table maps the `product_id ` to the actual `product_name ` and `price ` of each menu item.
+
 <html><body>
 <!--StartFragment-->
 
@@ -57,6 +61,8 @@ product_id | product_name | price
 </html>
 
 **Table 3: Members**
+
+The final `members ` table captures the `join_date ` when a `customer_id ` joined the beta version of the Danny’s Diner loyalty program.
 
 <html><body>
 <!--StartFragment-->
