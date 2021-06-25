@@ -11,7 +11,8 @@
     What was the volume of orders for each day of the week?
 */
 -- How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
-SELECT WEEK(registration_date, 2) AS Weekly,COUNT(runner_id) AS RunnerCount FROM runners 
+SELECT WEEK(registration_date, 2) AS Weekly, COUNT(runner_id) AS RunnerCount
+FROM runners
 GROUP BY WEEK(registration_date)
 
 -- How many pizzas were ordered?

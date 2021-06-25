@@ -21,7 +21,7 @@ VALUES
   ('1', 'sushi', '10'),
   ('2', 'curry', '15'),
   ('3', 'ramen', '12');
-  
+
 INSERT INTO members
 VALUES
   ('A', '2021-01-07'),
