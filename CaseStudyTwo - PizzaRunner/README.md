@@ -15,3 +15,10 @@ UPDATE customer_orders
 SET exclusions = CASE WHEN exclusions = "" THEN NULL ELSE exclusions END,
 	extras = CASE WHEN extras = "" THEN NULL ELSE extras END;
 ```
+
+There are some known data issues with runner_orders table so be careful when using this in your queries - make sure to check the data types for each column in the schema SQL!
+
+``` SQL
+UPDATE runner_orders 
+SET cancellation = CASE WHEN cancellation = "" THEN NULL ELSE cancellation END;
+```
