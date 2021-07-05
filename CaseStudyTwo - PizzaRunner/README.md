@@ -44,7 +44,7 @@ order_id | customer_id | pizza_id | exclusions | extras | order_time
 
 There are some known data issues with runner_orders table so be careful when using this in your queries - make sure to check the data types for each column in the schema SQL!
 
-Removing empty rows and replacing them with `NULL`  on `runner_orders ` table
+Removing empty rows and replacing them with `null`  on `runner_orders ` table
 ``` SQL
 UPDATE runner_orders 
 SET cancellation = CASE WHEN cancellation = "" THEN NULL ELSE cancellation END;
@@ -70,3 +70,5 @@ order_id | runner_id | pickup_time | distance | duration | cancellation
 <!--EndFragment-->
 </body>
 </html>
+
+
