@@ -1,10 +1,10 @@
 # Case Study Two - Runner Customer Experience
 
 ## Table of Contents
-- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/new/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#introduction)
-- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/new/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#datasets)
-- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/new/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#case-study-questions)
-- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/new/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#solutions)
+- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#introduction)
+- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#datasets)
+- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#case-study-questions)
+- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#solutions)
 
 
 ## Introduction 
