@@ -1,6 +1,6 @@
 # Case Study Two - Pizza Runner
 
-Table of Contents
+## Table of Contents
 - [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#introduction)
 - [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#datasets)
 - [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#case-study-questions)
@@ -163,7 +163,7 @@ pizza_id | pizza_name
 </body>
 </html>
 
-### Case Study Questions
+## Case Study Questions
 
 1. How many pizzas were ordered?
 2. How many unique customer orders were made?
@@ -176,7 +176,7 @@ pizza_id | pizza_name
 9. What was the total volume of pizzas ordered for each hour of the day?
 10. What was the volume of orders for each day of the week?
 
-### Solution
+## Solution
 
 1. How many pizzas were ordered?
 
