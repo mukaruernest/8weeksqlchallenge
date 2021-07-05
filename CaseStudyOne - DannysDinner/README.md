@@ -1,6 +1,6 @@
 # Case Study One - Danny's Diner
 
-##Table of Content
+## Table of Content
 
 - [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#introduction)
 - [Problem Statement](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#problem-statement)
