@@ -2,11 +2,11 @@
 
 ## Table of Content
 
-- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#introduction)
-- [Problem Statement](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#problem-statement)
-- [Data Sets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#datasets)
-- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#case-study-questions)
-- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyOne%20-%20DannysDinner#solution)
+- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#introduction)
+- [Problem Statement](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#problem-statement)
+- [DataSets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#datasets)
+- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#case-study-questions)
+- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#solution)
 
 ## Introduction
 
