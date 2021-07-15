@@ -2,8 +2,8 @@
 
 This case study has LOTS of questions - they are broken up by area of focus including:
 
-- [Pizza Metrics](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics)
-- [Runner and Customer Experience](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudyTwo%20-%20PizzaRunner/Runner%20and%20Customer%20Experience) 
+- [Pizza Metrics](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics)
+- [Runner and Customer Experience](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Runner%20and%20Customer%20Experience) 
 - Ingredient Optimisation
 - Pricing and Ratings
 - Bonus DML Challenges (DML - Data Manipulation Language)
