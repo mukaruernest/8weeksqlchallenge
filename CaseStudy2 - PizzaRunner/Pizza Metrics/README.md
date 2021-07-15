@@ -1,10 +1,10 @@
 # Case Study Two - Pizza Runner
 
 ## Table of Contents
-- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#introduction)
-- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#datasets)
-- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#case-study-questions)
-- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudyTwo%20-%20PizzaRunner/Pizza%20Metrics/README.md#solution)
+- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#introduction)
+- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#datasets)
+- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#case-study-questions)
+- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#solution)
 
 ## Introduction 
 
