@@ -71,8 +71,8 @@ order_id | customer_id | pizza_id | exclusions | extras | order_time
 </body>
 </html>
 
-Cleaned customer_orders Table
-
+<details>
+  <summary>Cleaned customer_orders Table</summary>
 <html><body>
 <!--StartFragment-->
 
@@ -96,7 +96,8 @@ order_id | customer_id | pizza_id | exclusions | extras | order_time
 <!--EndFragment-->
 </body>
 </html>
-
+</details>
+    
 **Table 3: Runner_orders**
 
 After each orders are received through the system - they are assigned to a runner - however not all orders are fully completed and can be cancelled by the restaurant or the customer.
@@ -125,8 +126,8 @@ order_id | runner_id | pickup_time | distance | duration | cancellation
 </body>
 </html>
 
-Cleaned runner_orders table
-
+<details>
+  <summary>Cleaned runner_orders table</summary>
 <html><body>
 <!--StartFragment-->
 
@@ -146,6 +147,7 @@ order_id | runner_id | pickup_time | distance | duration | cancellation
 <!--EndFragment-->
 </body>
 </html>
+</details>
 
 **Table 4: pizza_names**
 
