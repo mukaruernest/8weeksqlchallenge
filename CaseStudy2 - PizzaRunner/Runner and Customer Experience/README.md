@@ -1,10 +1,10 @@
-# Case Study Two - Pizza Runner
+# Case Study Two - Runner and Customer Experience
 
 ## Table of Contents
-- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#introduction)
-- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#datasets)
-- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#case-study-questions)
-- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Pizza%20Metrics#solution)
+- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#introduction)
+- [Datasets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#datasets)
+- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#case-study-questions)
+- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy2%20-%20PizzaRunner/Runner%20and%20Customer%20Experience#solution)
 
 ## Introduction 
 
@@ -14,7 +14,7 @@ Danny was scrolling through his Instagram feed when something really caught his 
 
 Danny was sold on the idea, but he knew that pizza alone was not going to help him get seed funding to expand his new Pizza Empire - so he had one more genius idea to combine with it - he was going to Uberize it - and so Pizza Runner was launched!
 
-Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
+Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers
 
 ## Datasets
 
@@ -71,8 +71,8 @@ order_id | customer_id | pizza_id | exclusions | extras | order_time
 </body>
 </html>
 
-Cleaned customer_orders Table
-
+<details>
+  <summary>Cleaned customer_orders Table</summary>
 <html><body>
 <!--StartFragment-->
 
@@ -96,7 +96,8 @@ order_id | customer_id | pizza_id | exclusions | extras | order_time
 <!--EndFragment-->
 </body>
 </html>
-
+</details>
+    
 **Table 3: Runner_orders**
 
 After each orders are received through the system - they are assigned to a runner - however not all orders are fully completed and can be cancelled by the restaurant or the customer.
@@ -125,8 +126,8 @@ order_id | runner_id | pickup_time | distance | duration | cancellation
 </body>
 </html>
 
-Cleaned runner_orders table
-
+<details>
+  <summary>Cleaned runner_orders table</summary>
 <html><body>
 <!--StartFragment-->
 
@@ -146,6 +147,7 @@ order_id | runner_id | pickup_time | distance | duration | cancellation
 <!--EndFragment-->
 </body>
 </html>
+</details>
 
 **Table 4: pizza_names**
 
@@ -165,148 +167,102 @@ pizza_id | pizza_name
 
 ## Case Study Questions
 
-1. How many pizzas were ordered?
-2. How many unique customer orders were made?
-3. How many successful orders were delivered by each runner?
-4. How many of each type of pizza was delivered?
-5. How many Vegetarian and Meatlovers were ordered by each customer?
-6. What was the maximum number of pizzas delivered in a single order?
-7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
-8. How many pizzas were delivered that had both exclusions and extras?
-9. What was the total volume of pizzas ordered for each hour of the day?
-10. What was the volume of orders for each day of the week?
+1.   How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+2.   What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+3.   Is there any relationship between the number of pizzas and how long the order takes to prepare?
+4.   What was the average distance travelled for each customer?
+5.   What was the difference between the longest and shortest delivery times for all orders?
+6.   What was the average speed for each runner for each delivery and do you notice any trend for these values?
+7.   What is the successful delivery percentage for each runner?
 
 ## Solution
 
-1. How many pizzas were ordered?
-
-``` SQL
-SELECT COUNT(order_id) AS pizzasordered
-FROM customer_orders;
+Q1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+```SQL
+SELECT WEEK(registration_date, 2) AS Weekly, COUNT(runner_id) AS RunnerCount
+FROM runners
+GROUP BY WEEK(registration_date);
 ```
+| Weekly | RunnerCount |
+|--------|-------------|
+| 52     |      1      |
+| 1      |      2      |
+| 2      |      1      |
 
-2. How many unique customer orders were made?
-
-``` SQL
-SELECT COUNT(DISTINCT(order_id)) AS Uniquecustomerorders
-FROM customer_orders;
+Q2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+```SQL
+SELECT CEILING(AVG(MINUTE(ro.pickup_time) - MINUTE(co.order_time))) AS AverageMinutes
+FROM customer_orders co
+    INNER JOIN runner_orders ro ON co.order_id = ro.order_id;
 ```
+| # AverageMinutes |
+|------------------|
+|          4                |
 
-3. How many successful orders were delivered by each runner?
+Q3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+/*No there is No relationship*/
+```SQL
+SELECT co.Pizza_id, CEILING(AVG(MINUTE(ro.pickup_time) - MINUTE(co.order_time))) AS AverageMakingTime, COUNT(co.order_id) AS NumberOfPizzas
+FROM customer_orders co
+    INNER JOIN runner_orders ro ON co.order_id = ro.order_id
+GROUP BY co.pizza_id;
+```
+| # Pizza_id | AverageMakingTime | NumberOfPizzas |
+|:----------:|:-----------------:|:--------------:|
+|      1     |         5         |       10       |
+|      2     |         1         |        4       |
 
-``` SQL
-SELECT runner_id, COUNT(order_id) AS DeliveredOrders
+Q4. What was the average distance travelled for each customer?
+```SQL
+SELECT co.customer_id, ROUND(AVG(ro.distance),2) AS AverageDistanceTraveled
+FROM customer_orders co
+    INNER JOIN runner_orders ro ON co.order_id = ro.order_id
+GROUP BY customer_id;
+```
+| # customer_id | AverageDistanceTraveled |
+|:-------------:|:-----------------------:|
+|      101      |            20           |
+|      102      |          16.73          |
+|      103      |           23.4          |
+|      104      |            10           |
+|      105      |            25           |
+
+Q5. What was the difference between the longest and shortest delivery times for all orders?
+```SQL
+SELECT CONCAT(MAX(duration) - MIN(duration), " minutes") AS DifferenceBtwnLongestandShortest
+FROM runner_orders;
+```
+| DifferenceBtwnLongestandShortest |
+|:--------------------------------:|
+|            30 minutes            |
+
+Q6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+```SQL
+SELECT runner_id, CONCAT(FLOOR(AVG(distance/ (duration/60))), " KM/h") AS AverageSpeed , order_id
 FROM runner_orders
 WHERE cancellation IS NULL
+GROUP BY runner_id, order_id;
+```
+| # runner_id | AverageSpeed | order_id |
+|:-----------:|:------------:|:--------:|
+|      1      |    37 KM/h   |     1    |
+|      1      |    44 KM/h   |     2    |
+|      1      |    40 KM/h   |     3    |
+|      2      |    35 KM/h   |     4    |
+|      3      |    40 KM/h   |     5    |
+|      2      |    60 KM/h   |     7    |
+|      2      |    93 KM/h   |     8    |
+|      1      |    60 KM/h   |    10    |
+
+Q 7. What is the successful delivery percentage for each runner?
+```SQL
+SELECT runner_id, CONCAT(COUNT(CASE WHEN cancellation IS NULL THEN "DELIVERED" END)/COUNT(order_id)*100, "%" )AS PercentageDelivered
+FROM runner_orders
 GROUP BY runner_id;
 ```
+| # runner_id | PercentageDelivered |
+|:-----------:|:-------------------:|
+|      1      |      100.0000%      |
+|      2      |       75.0000%      |
+|      3      |       50.0000%      |
 
-4. How many of each type of pizza was delivered?
-
-``` SQL
-With
-    pizzadelivery
-    AS
-    (
-        SELECT co.pizza_id, 
-    
-IF(ro.cancellation IS NULL , "delivered", "not delivered" ) AS deliverystatus, ro.order_id
-FROM customer_orders co
-LEFT JOIN runner_orders AS ro ON co.order_id = ro.order_id)
-SELECT pn.pizza_name, COUNT(pd.deliverystatus) AS PizzaDelivered
-FROM pizzadelivery pd
-    LEFT JOIN pizza_names AS pn ON pd.pizza_id = pn.pizza_id
-WHERE deliverystatus = "delivered"
-GROUP BY pizza_name;
-```
-
-5. How many Vegetarian and Meatlovers were ordered by each customer?
-
-``` SQL
-SELECT co.customer_id AS Customers, COUNT(CASE WHEN pn.pizza_name = "MeatLovers" THEN "MeatLovers" END) AS "MeatLovers", COUNT(CASE WHEN pn.pizza_name = "Vegetarian" THEN "Vegetarian" END) AS "Vegetarian"
-FROM customer_orders co
-    JOIN Pizza_names pn ON co.pizza_id = pn.pizza_id
-GROUP BY customer_id;
-```
-
-6. What was the maximum number of pizzas delivered in a single order?
-
-``` SQL
-WITH
-    pizzaorders
-    AS
-    (
-        SELECT co.order_id, COUNT(co.Pizza_id) AS PizzaCount , DENSE_RANK() OVER(ORDER BY COUNT(co.pizza_id) DESC) AS Ranked
-        FROM customer_orders co
-            JOIN runner_orders ro ON co.order_id = ro.order_id
-        WHERE cancellation IS NULL
-        GROUP BY order_id
-    )
-SELECT order_id, PizzaCount
-FROM pizzaorders po
-WHERE Ranked = 1;
-```
-
-7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
-
-``` SQL
-with
-    changedpizzas
-    AS
-    (
-        SELECT co.customer_id, co.order_id ,
-            CASE 
-      WHEN co.exclusions IS NULL AND co.extras IS NULL THEN "NoChange"
-      ELSE "HasChange"
-      END ChangedPizzas
-        FROM customer_orders co
-            INNER JOIN runner_orders ro ON co.order_id = ro.order_id
-        WHERE cancellation IS NULL OR cancellation = ""
-    )
-SELECT cp.customer_id AS Customer,
-    COUNT(CASE WHEN Changedpizzas = "NoChange" THEN "No Changes" END) NoChanges,
-    COUNT(CASE WHEN Changedpizzas = "HasChange" THEN "HasChanges" END) Hasatleast1Change
-FROM changedpizzas cp
-GROUP BY customer_id;
-```
-
-8. How many pizzas were delivered that had both exclusions and extras?
-
-``` SQL
-with
-    bothchanged
-    AS
-    (
-        SELECT co.order_id,
-            CASE 
-        WHEN co.exclusions IS NOT NULL AND co.extras IS NOT NULL THEN "BothChanges"
-        WHEN co.exclusions IS NULL AND co.extras IS NOT NULL THEN "OneChange"
-        WHEN co.extras IS NULL AND co.exclusions IS NOT NULL THEN "OneChange"
-        ELSE "HasNoChanges" 
-        END ExclusionsandExtras
-        FROM customer_orders co
-            INNER JOIN runner_orders ro ON co.order_id = ro.order_id
-        WHERE cancellation IS NULL
-    )
-SELECT COUNT(*) AS PizzasDeliveredwithexclusions
-FROM bothchanged
-WHERE ExclusionsandExtras = "BothChanges";
-```
-
-9. What was the total volume of pizzas ordered for each hour of the day?
-
-``` SQL
-SELECT HOUR(order_time) AS HourofDay, COUNT(pizza_id) AS PizzaCount
-FROM customer_orders
-GROUP BY HOUR(order_time)
-ORDER BY HOUR(order_time);
-```
-
-10. What was the volume of orders for each day of the week?
-
-``` SQL
-SELECT dayname(order_time) AS DayOfWeek, COUNT(pizza_id) AS PizzaCount
-FROM customer_orders
-GROUP BY  dayname(order_time)
-ORDER BY dayname(order_time) DESC;
-```
