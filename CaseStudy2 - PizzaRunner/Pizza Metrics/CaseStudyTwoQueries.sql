@@ -95,10 +95,10 @@ GROUP BY HOUR(order_time)
 ORDER BY HOUR(order_time);
 
 -- 10 What was the volume of orders for each day of the week?
-SELECT dayname(order_time) AS DayOfWeek, COUNT(pizza_id) AS PizzaCount
+SELECT dayname(order_time) AS DayOfWeek, COUNT(*) AS PizzaCount
 FROM customer_orders
 GROUP BY  dayname(order_time)
-ORDER BY dayname(order_time) DESC;
+ORDER BY dayname(order_time) ;
 
 
 
