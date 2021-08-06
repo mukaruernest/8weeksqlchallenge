@@ -1,1 +1,3 @@
-[UPDATING]
+# Case Study Three Info
+
+**[UPDATING]**
