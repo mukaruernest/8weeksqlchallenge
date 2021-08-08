@@ -1,7 +1,5 @@
 /*
-    How many customers has Foodie-Fi ever had?
-    What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
-    What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
+
     What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
     How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
     What is the number and percentage of customer plans after their initial free trial?
@@ -25,10 +23,24 @@ with cte AS
  FROM cte
  GROUP BY monthly;
  
- -- 3 What plan start_date values occur after the year 2020 for our dataset? 
- -- Show the breakdown by count of events for each plan_name
+ -- 3 What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
+SELECT p.plan_name, COUNT(*) AS TotalCount
+FROM subscriptions s
+INNER JOIN plans p ON s.plan_id = p.plan_id
+WHERE YEAR(start_date) > 2020  
+GROUP BY  plan_name;
 
- 
+-- 4 What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
+SELECT
+(SELECT COUNT(DISTINCT customer_id) 
+FROM subscriptions
+WHERE plan_id = 4) AS CustomerCount,
+round(SUM(CASE WHEN plan_id = 4 THEN 1 END)/COUNT(DISTINCT customer_id) * 100 , 1) AS percentage
+FROM subscriptions;
+
+-- 5 How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
+
+
 
 
  
