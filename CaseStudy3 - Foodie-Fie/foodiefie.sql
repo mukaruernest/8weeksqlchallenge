@@ -23,19 +23,20 @@ GROUP BY month_start
 ORDER BY month_start;
  
  -- 3 What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
-SELECT p.plan_name, COUNT(*) AS TotalCount
+SELECT p.plan_id, p.plan_name, COUNT(*) AS TotalCount
 FROM foodie_fi.subscriptions s
-INNER JOIN plans p ON s.plan_id = p.plan_id
-WHERE DATE_PART('MONTH', start_date) > 2020  
-GROUP BY  plan_name;
+INNER JOIN foodie_fi.plans p ON s.plan_id = p.plan_id
+WHERE EXTRACT(YEAR FROM start_date) > 2020  
+GROUP BY  p.plan_id, plan_name
+ORDER BY plan_id;
 
 -- 4 What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
 SELECT
 (SELECT COUNT(DISTINCT customer_id) 
-FROM subscriptions
+FROM foodie_fi.subscriptions
 WHERE plan_id = 4) AS CustomerCount,
-round(SUM(CASE WHEN plan_id = 4 THEN 1 END)/COUNT(DISTINCT customer_id) * 100 , 1) AS percentage
-FROM subscriptions;
+ROUND(100 * SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END)/CAST(COUNT(DISTINCT customer_id) AS DECIMAL) , 1) AS percentage
+FROM foodie_fi.subscriptions;
 
 -- 5 How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
 
