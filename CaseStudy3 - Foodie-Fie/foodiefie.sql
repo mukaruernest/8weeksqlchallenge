@@ -15,7 +15,7 @@
  
  -- 2 What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
 SELECT
-  DATE_TRUNC('WEEK', start_date) AS month_start,
+  EXTRACT(MONTH FROM start_date) AS month_start,
   COUNT(*) AS trial_customers
 FROM foodie_fi.subscriptions
 WHERE plan_id = 0
