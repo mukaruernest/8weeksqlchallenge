@@ -112,10 +112,10 @@ ORDER BY plan_id;
 ```SQL
 SELECT
 (SELECT COUNT(DISTINCT customer_id) 
-FROM subscriptions
+FROM foodie_fi.subscriptions
 WHERE plan_id = 4) AS CustomerCount,
-round(SUM(CASE WHEN plan_id = 4 THEN 1 END)/COUNT(DISTINCT customer_id) * 100 , 1) AS percentage
-FROM subscriptions;
+ROUND(100 * SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END)/CAST(COUNT(DISTINCT customer_id) AS DECIMAL) , 1) AS percentage
+FROM foodie_fi.subscriptions;
 ```
 
 5.  How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
