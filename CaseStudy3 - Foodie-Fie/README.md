@@ -1,4 +1,4 @@
-# Case Study One - Foodie - Fi
+# Case Study Three - Foodie - Fi
 
 
 ## Table of Content
