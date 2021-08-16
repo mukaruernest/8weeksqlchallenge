@@ -3,11 +3,11 @@
 
 ## Table of Content
 
-- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#introduction)
-- [Problem Statement](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#problem-statement)
-- [DataSets](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#datasets)
-- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#case-study-questions)
-- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/tree/master/CaseStudy1%20-%20DannysDinner#solution)
+- [Introduction](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudy3%20-%20Foodie-Fie/README.md#introduction)
+- [Problem Statement](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudy3%20-%20Foodie-Fie/README.md#problem-statement)
+- [DataSets](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudy3%20-%20Foodie-Fie/README.md#datasets)
+- [Case Study Questions](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudy3%20-%20Foodie-Fie/README.md#case-study-questions)
+- [Solutions](https://github.com/mukaruernest/8weeksqlchallenge/blob/master/CaseStudy3%20-%20Foodie-Fie/README.md#solution)
 
 
 ![image](https://user-images.githubusercontent.com/10958742/129623791-bc1d067a-4eb5-4efc-99b1-242ec9557769.png)
