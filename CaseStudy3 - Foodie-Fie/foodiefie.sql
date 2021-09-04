@@ -1,5 +1,4 @@
 /*
-
     What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
     How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
     What is the number and percentage of customer plans after their initial free trial?
@@ -39,7 +38,24 @@ ROUND(100 * SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END)/CAST(COUNT(DISTINCT cus
 FROM foodie_fi.subscriptions;
 
 -- 5 How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
-
+WITH ranked_plans AS (
+  SELECT
+    customer_id,
+    plan_id,
+    ROW_NUMBER() OVER (
+      PARTITION BY customer_id
+      ORDER BY start_date DESC
+    ) AS plan_rank
+  FROM foodie_fi.subscriptions
+)
+SELECT
+  SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END) AS churn_customers,
+  ROUND(
+    100 * SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END) /
+    COUNT(*)
+  ) AS percentage
+FROM ranked_plans
+WHERE plan_rank = 2;
 
 
 
