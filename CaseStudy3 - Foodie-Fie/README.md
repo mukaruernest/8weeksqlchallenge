@@ -1,4 +1,4 @@
-# Case Study One - Foodie - Fi
+# Case Study Three - Foodie - Fi
 
 
 ## Table of Content
@@ -83,7 +83,12 @@ This is only part of the table to see the whole datble check the schema file.
  SELECT COUNT(DISTINCT customer_id) AS TotalCustomers
  FROM foodie_fi.subscriptions; 
 ```
- 
+## Results
+
+| totalcustomers |
+|----------------|
+| 1000           |
+
 2.  What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
 
 ```SQL
@@ -95,7 +100,22 @@ WHERE plan_id = 0
 GROUP BY month_start
 ORDER BY month_start;
 ```
- 
+## Results
+
+| month_start | trial_customers |
+|:-----------:|:---------------:|
+|      1      |        88       |
+|      2      |        68       |
+|      3      |        94       |
+|      4      |        81       |
+|      5      |        88       |
+|      6      |        79       |
+|      7      |        89       |
+|      8      |        88       |
+|      9      |        87       |
+|      10     |        79       |
+|      11     |        75       |
+| 12          | 84              |
 3.  What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name.
 
 ```SQL
@@ -106,6 +126,14 @@ WHERE EXTRACT(YEAR FROM start_date) > 2020
 GROUP BY  p.plan_id, plan_name
 ORDER BY plan_id;
 ```
+## Results 
+
+| plan_id |   plan_name   | totalcount |
+|:-------:|:-------------:|:----------:|
+|    1    | basic monthly |      8     |
+|    2    |  pro monthly  |     60     |
+|    3    |   pro annual  |     63     |
+|    4    |     churn     |     71     |
 
 4.  What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
 
@@ -117,6 +145,11 @@ WHERE plan_id = 4) AS CustomerCount,
 ROUND(100 * SUM(CASE WHEN plan_id = 4 THEN 1 ELSE 0 END)/CAST(COUNT(DISTINCT customer_id) AS DECIMAL) , 1) AS percentage
 FROM foodie_fi.subscriptions;
 ```
+## Results 
+
+| customercount | percentage |
+|:-------------:|:----------:|
+|      307      |    30.7    |
 
 5.  How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
 
