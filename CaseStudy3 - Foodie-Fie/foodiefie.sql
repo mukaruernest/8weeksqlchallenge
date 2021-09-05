@@ -44,7 +44,7 @@ WITH ranked_plans AS (
     plan_id,
     ROW_NUMBER() OVER (
       PARTITION BY customer_id
-      ORDER BY start_date DESC
+      ORDER BY start_date ASC
     ) AS plan_rank
   FROM foodie_fi.subscriptions
 )
@@ -56,7 +56,6 @@ SELECT
   ) AS percentage
 FROM ranked_plans
 WHERE plan_rank = 2;
-
 
 
  
