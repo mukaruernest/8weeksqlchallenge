@@ -184,6 +184,9 @@ pizza_id | pizza_name
 SELECT COUNT(order_id) AS pizzasordered
 FROM customer_orders;
 ```
+| pizzasordered |
+|---------------|
+| '14'          |
 
 2. How many unique customer orders were made?
 
@@ -191,6 +194,9 @@ FROM customer_orders;
 SELECT COUNT(DISTINCT(order_id)) AS Uniquecustomerorders
 FROM customer_orders;
 ```
+| Uniquecustomerorders |
+|----------------------|
+| '10'                 |
 
 3. How many successful orders were delivered by each runner?
 
@@ -200,6 +206,11 @@ FROM runner_orders
 WHERE cancellation IS NULL
 GROUP BY runner_id;
 ```
+| runner_id | DeliveredOrders |
+|-----------|-----------------|
+| 1         | 4               |
+| 2         | 3               |
+| 3         | 1               |
 
 4. How many of each type of pizza was delivered?
 
@@ -219,6 +230,10 @@ FROM pizzadelivery pd
 WHERE deliverystatus = "delivered"
 GROUP BY pizza_name;
 ```
+| pizza_name | PizzaDelivered |
+|------------|----------------|
+| Meatlovers | 9              |
+| Vegetarian | 3              |
 
 5. How many Vegetarian and Meatlovers were ordered by each customer?
 
@@ -228,6 +243,13 @@ FROM customer_orders co
     JOIN Pizza_names pn ON co.pizza_id = pn.pizza_id
 GROUP BY customer_id;
 ```
+| Customers | MeatLovers | Vegetarian |
+|-----------|------------|------------|
+| 101       | 2          | 1          |
+| 102       | 2          | 1          |
+| 103       | 3          | 1          |
+| 104       | 3          | 0          |
+| 105       | 0          | 1          |
 
 6. What was the maximum number of pizzas delivered in a single order?
 
@@ -246,6 +268,9 @@ SELECT order_id, PizzaCount
 FROM pizzaorders po
 WHERE Ranked = 1;
 ```
+| order_id | PizzaCount |
+|----------|------------|
+| 4        | 3          |
 
 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 
@@ -269,6 +294,13 @@ SELECT cp.customer_id AS Customer,
 FROM changedpizzas cp
 GROUP BY customer_id;
 ```
+| Customer | NoChanges | Hasatleast1Change |
+|----------|-----------|-------------------|
+| 101      | 2         | 0                 |
+| 102      | 3         | 0                 |
+| 103      | 0         | 3                 |
+| 104      | 1         | 2                 |
+| 105      | 0         | 1                 |
 
 8. How many pizzas were delivered that had both exclusions and extras?
 
@@ -292,6 +324,9 @@ SELECT COUNT(*) AS PizzasDeliveredwithexclusions
 FROM bothchanged
 WHERE ExclusionsandExtras = "BothChanges";
 ```
+| PizzasDeliveredwithexclusions |
+|-------------------------------|
+| '1'                           |
 
 9. What was the total volume of pizzas ordered for each hour of the day?
 
@@ -301,6 +336,15 @@ FROM customer_orders
 GROUP BY HOUR(order_time)
 ORDER BY HOUR(order_time);
 ```
+| HourofDay | PizzaCount |
+|-----------|------------|
+| 11        | 1          |
+| 12        | 2          |
+| 13        | 3          |
+| 18        | 3          |
+| 19        | 1          |
+| 21        | 3          |
+| 23        | 1          |
 
 10. What was the volume of orders for each day of the week?
 
@@ -310,3 +354,9 @@ FROM customer_orders
 GROUP BY  dayname(order_time)
 ORDER BY dayname(order_time) DESC;
 ```
+| DayOfWeek | PizzaCount |
+|-----------|------------|
+| Friday    | 1          |
+| Saturday  | 5          |
+| Thursday  | 3          |
+| Wednesday | 5          |
